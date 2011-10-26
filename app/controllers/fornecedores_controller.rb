@@ -5,7 +5,7 @@ class FornecedoresController < ApplicationController
   before_filter :authenticate_usuario!, except: [:index]
 
   def index
-    @fornecedores = Fornecedor.all
+    @fornecedores = Fornecedor.em_ordem.page(params[:page])
 
     # respond_to do |format|
     #   format.html # index.html.erb

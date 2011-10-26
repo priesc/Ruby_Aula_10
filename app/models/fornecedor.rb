@@ -14,6 +14,10 @@ class Fornecedor < ActiveRecord::Base
 	usar_como_cpf :cpf
 	usar_como_cnpj :cnpj
 
+  def self.em_ordem
+  	order('id DESC')
+  end
+
   private
 	def cpf_ou_cnpj
 		if cpf.present? and cnpj.present?

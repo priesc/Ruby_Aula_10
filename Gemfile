@@ -16,6 +16,8 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'kaminari'
+
 gem 'jquery-rails'
 gem 'brazilian-rails'
 

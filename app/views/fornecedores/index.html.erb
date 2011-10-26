@@ -1,6 +1,6 @@
 <h1>Lista dos Fornecedores</h1>
 
-<table>
+<table border='1'>
   <tr>
     <th>Nome</th>
     <th>CNPJ/CPF</th>
@@ -13,14 +13,14 @@
 <% @fornecedores.each do |fornecedor| %>
   <tr>
     <td><%= fornecedor.nome %></td>
-    <td> <% fornecedor.pj? ? fornecedor.cnpj : fornecedor.cpf %></td>
-    <td><%= fornecedor.pj? ? 'PJ' : 'PF'%></td>
+    <td><%= fornecedor.pj? ? fornecedor.cnpj : fornecedor.cpf %></td>
+    <td><%= fornecedor.pj? ? 'Sim' : 'Não'%></td>
     <td><%= fornecedor.publicado? ? 'Sim' : 'Não'%></td>
 
     <!--<td><%= link_to 'Show', fornecedor %></td>-->
     <% if usuario_signed_in?  %>
     <td><%= link_to 'Editar', edit_fornecedor_path(fornecedor) %></td>
-    <td><%= link_to 'Excluir', fornecedor, confirm: 'Tem certeza?', method: :delete %></td>
+    <td><%= link_to 'Excluir', fornecedor, confirm: 'Tem certeza de que deseja excluir este fornecedor?', method: :delete %></td>
     <% else %>
     <td></td>
     <td></td>
@@ -31,6 +31,7 @@
 
 <br />
 
+<%= paginate @fornecedores %>
 
 <% if usuario_signed_in? %>
 <%= link_to 'Novo Fornecedor', new_fornecedor_path %>
